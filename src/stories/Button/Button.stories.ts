@@ -3,7 +3,8 @@ import { ButtonProp, Button } from "../../components/Button";
 
 const buttonObj: ButtonProp = {
     class: 'primary',
-    label: "Submit"
+    label: "Submit",
+    isDiabled: false
 };
 
 const meta = {
@@ -36,3 +37,10 @@ export const Danger: Story = {
         class: 'danger'
     }
 };
+
+export const Disabled: Story = {
+    args:{
+        ...buttonObj,
+        isDiabled: true
+    }
+}
