@@ -1,35 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import { UserList, UserType } from "./components/UserList";
+import { Button } from "./components/Button";
+import type { TablePaginationConfig } from 'antd/es/table';
 
-function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+const userData: UserType[] = [
+  {
+    id: 1,
+    name: 'Gyan',
+    age: 25,
+    tags: ['developer', 'backend', 'c#']
+  },
+  {
+    id: 2,
+    name: 'Mani',
+    age: 22,
+    tags: ['designer', 'UI/UX', 'Figma']
+  },
+  {
+    id: 3,
+    name: 'Kharel',
+    age: 23,
+    tags: ['QA Tester', 'Quality', 'Automated']
+  }
+];
+
+const pagination : TablePaginationConfig = {
+  pageSize: 2
 }
 
-export default App
+export const App = () => {
+  return (
+    <>
+      <UserList data={userData} pagination={pagination}/>
+      <Button class="primary" label="Create" isDiabled={false} />
+    </>
+  );
+};
